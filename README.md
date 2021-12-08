@@ -9,5 +9,9 @@ Compatible with AutoHotkey 2 (alpha).
 2. In an AHK file, add:
 ```
 #include "%A_AhkPath%/../robust.ahk"
+
+<your script here>
+
+RobustEnd()
 ```
 3. Call your AHK file from the command-line with `ahk <file.ahk>`
