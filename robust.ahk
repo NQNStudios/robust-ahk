@@ -124,3 +124,8 @@ RobustEnd()
     }
     BranchingChoice("Did the script work?", "Yes", OnYes, "No", OnNo)
 }
+
+TimeStamp()
+{
+    return "" A_MM "-" A_DD "-" A_YYYY "-" A_Hour "-" A_Min "-" A_Sec
+}
