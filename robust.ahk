@@ -95,7 +95,7 @@ CheckBoxes(Text, Choices, CallOnChecked)
         callOnChecked(chosen)
         checkBoxWindow.destroy()
     }
-    checkBoxWindow.Add("Button", "", "Submit").OnEvent("Click", Submit.Bind(callOnChecked))
+    checkBoxWindow.Add("Button", "Default", "Submit").OnEvent("Click", Submit.Bind(callOnChecked))
     checkBoxWindow.show()
 }
 
@@ -119,7 +119,7 @@ RobustEnd()
         }
         CheckBoxes("Were any of these stored values broken?", Things, ClearValues)
     }
-    BranchingChoice("Did the script work?", "Yes", OnYes, "No", OnNo)
+    BranchingChoice("Did the script work?", "&Yes", OnYes, "&No", OnNo)
 }
 
 TimeStamp()
