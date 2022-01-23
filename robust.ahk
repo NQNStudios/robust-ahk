@@ -99,13 +99,18 @@ CheckBoxes(Text, Choices, CallOnChecked)
     checkBoxWindow.show()
 }
 
-RobustEnd()
+TimeStamp()
 {
-    OnYes(*)
-    {
+    return "" A_MM "-" A_DD "-" A_YYYY "-" A_Hour "-" A_Min "-" A_Sec
+}
 
+RobustRun(Main)
+{
+    OnSuccess(*)
+    {
     }
-    OnNo(*)
+
+    OnFail(*)
     {
         ClearValues(Files)
         {
@@ -119,10 +124,15 @@ RobustEnd()
         }
         CheckBoxes("Were any of these stored values broken?", Things, ClearValues)
     }
-    BranchingChoice("Did the script work?", "&Yes", OnYes, "&No", OnNo)
-}
 
-TimeStamp()
-{
-    return "" A_MM "-" A_DD "-" A_YYYY "-" A_Hour "-" A_Min "-" A_Sec
+    Try
+    {
+        Main()
+        BranchingChoice("Did the script work?", "&Yes", OnSuccess, "&No", OnFail)
+    }
+    Catch as e
+    {
+        MsgBox("Error " e.Message)
+        OnFail()
+    }
 }
